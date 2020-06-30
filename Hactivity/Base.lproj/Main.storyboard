@@ -31,11 +31,15 @@
                                             <color key="titleColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <segue destination="FhF-kZ-d0T" kind="presentation" modalPresentationStyle="fullScreen" id="kaV-Dv-x0y"/>
+                                            <segue destination="FhF-kZ-d0T" kind="presentation" animates="NO" modalPresentationStyle="currentContext" id="kaV-Dv-x0y"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqp-hp-PMh">
-                                        <rect key="frame" x="81.5" y="309" width="123" height="30"/>
+                                        <rect key="frame" x="92.5" y="251" width="101" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="LZt-o6-Pnk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Forgot Password?">
                                             <color key="titleColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -64,7 +68,7 @@
                                     <constraint firstAttribute="trailing" secondItem="AN1-Gv-lcI" secondAttribute="trailing" constant="27" id="IE4-q7-hzG"/>
                                     <constraint firstItem="50h-xL-K6Y" firstAttribute="centerX" secondItem="yGq-Aa-cuB" secondAttribute="centerX" id="MJB-Hd-gQ5"/>
                                     <constraint firstAttribute="trailing" secondItem="Ktb-X5-R5Q" secondAttribute="trailing" constant="86" id="MZF-Hj-92F"/>
-                                    <constraint firstItem="Jqp-hp-PMh" firstAttribute="centerX" secondItem="yGq-Aa-cuB" secondAttribute="centerX" id="O4I-qw-3bR"/>
+                                    <constraint firstItem="fVg-u4-hWb" firstAttribute="top" secondItem="Jqp-hp-PMh" secondAttribute="bottom" constant="76" id="P2Q-p9-43j"/>
                                     <constraint firstAttribute="trailing" secondItem="fVg-u4-hWb" secondAttribute="trailing" constant="116" id="R7v-VN-XBL"/>
                                     <constraint firstItem="50h-xL-K6Y" firstAttribute="top" secondItem="AN1-Gv-lcI" secondAttribute="bottom" constant="30" id="RrC-Ko-83x"/>
                                     <constraint firstItem="fVg-u4-hWb" firstAttribute="leading" secondItem="yGq-Aa-cuB" secondAttribute="leading" constant="116" id="V37-lB-Fki"/>
@@ -72,10 +76,10 @@
                                     <constraint firstItem="AN1-Gv-lcI" firstAttribute="top" secondItem="Nmw-dh-s0Q" secondAttribute="bottom" constant="20" id="Y8F-LF-ws3"/>
                                     <constraint firstAttribute="bottom" secondItem="fVg-u4-hWb" secondAttribute="bottom" constant="8" id="ZsC-hf-jI6"/>
                                     <constraint firstItem="AN1-Gv-lcI" firstAttribute="leading" secondItem="yGq-Aa-cuB" secondAttribute="leading" constant="27" id="f0y-cL-Mix"/>
-                                    <constraint firstItem="Jqp-hp-PMh" firstAttribute="top" secondItem="50h-xL-K6Y" secondAttribute="bottom" constant="58" id="f5f-Qf-hss"/>
                                     <constraint firstAttribute="trailing" secondItem="Nmw-dh-s0Q" secondAttribute="trailing" constant="27" id="gqd-rK-1qb"/>
                                     <constraint firstAttribute="width" constant="286" id="hvv-Oj-AvZ"/>
                                     <constraint firstItem="Nmw-dh-s0Q" firstAttribute="top" secondItem="Ktb-X5-R5Q" secondAttribute="bottom" constant="8" id="k5V-bt-eUc"/>
+                                    <constraint firstItem="Jqp-hp-PMh" firstAttribute="centerX" secondItem="50h-xL-K6Y" secondAttribute="centerX" id="lMb-6g-vUc"/>
                                     <constraint firstItem="Nmw-dh-s0Q" firstAttribute="leading" secondItem="yGq-Aa-cuB" secondAttribute="leading" constant="27" id="qAF-qc-sxW"/>
                                 </constraints>
                             </view>
@@ -94,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="LmW-yB-eF4">
             <objects>
-                <viewController id="FhF-kZ-d0T" sceneMemberID="viewController">
+                <viewController id="FhF-kZ-d0T" customClass="SignupViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q4f-mj-ctK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +134,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UlX-la-wOE">
                                         <rect key="frame" x="40.5" y="254" width="205.5" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyZ-6T-eaw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyZ-6T-eaw">
                                                 <rect key="frame" x="0.0" y="6" width="165.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -142,6 +146,9 @@
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" red="0.28330293429137055" green="0.23129213613891036" blue="0.21792882521396054" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="loginButtonPressed:" destination="FhF-kZ-d0T" eventType="touchUpInside" id="ToU-Dh-FZ0"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
