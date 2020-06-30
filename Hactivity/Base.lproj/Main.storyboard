@@ -114,27 +114,53 @@
                     </view>
                     <navigationItem key="navigationItem" id="GBn-Pg-4EW"/>
                     <connections>
+                        <outlet property="emailTextField" destination="Nmw-dh-s0Q" id="IH1-Dl-oyu"/>
                         <outlet property="passwordTextField" destination="AN1-Gv-lcI" id="u2K-AB-D0r"/>
+                        <segue destination="meC-eG-TVV" kind="presentation" identifier="ToCalendarView" animates="NO" modalPresentationStyle="currentContext" id="I4q-zW-QKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="saB-wf-sFF">
             <objects>
-                <viewController id="meC-eG-TVV" sceneMemberID="viewController">
+                <viewController id="meC-eG-TVV" customClass="CalendarViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j2R-hj-NOZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-ij-WXx" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="448"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InZ-C5-T9w">
+                                <rect key="frame" x="186" y="620" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="DOI-ab-6Yb"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="top" secondItem="qWd-ih-23X" secondAttribute="top" id="Ed5-TS-eXF"/>
+                            <constraint firstItem="qWd-ih-23X" firstAttribute="trailing" secondItem="nEd-ij-WXx" secondAttribute="trailing" id="ayQ-Dc-ahZ"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="height" secondItem="j2R-hj-NOZ" secondAttribute="height" multiplier="0.5" id="jVR-y9-Emg"/>
+                            <constraint firstItem="qWd-ih-23X" firstAttribute="bottom" secondItem="InZ-C5-T9w" secondAttribute="bottom" constant="221" id="vPg-Lx-yCh"/>
+                            <constraint firstItem="InZ-C5-T9w" firstAttribute="centerX" secondItem="nEd-ij-WXx" secondAttribute="centerX" id="z82-89-ljw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qWd-ih-23X"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4q9-Bv-owp"/>
+                    <connections>
+                        <outlet property="label" destination="InZ-C5-T9w" id="R1j-SX-a74"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeY-pk-btH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="140"/>
+            <point key="canvasLocation" x="1978" y="138"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="LmW-yB-eF4">

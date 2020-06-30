@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
@@ -30,10 +29,17 @@ class LoginViewController: UIViewController {
         }
     }
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        let params = ["email": "kputra@mailinator.com", "password": "123456"]
-        AF.request("http://localhost:3000/api/login", method: .post, parameters: params).responseJSON { response in
-            let json = JSON(response.value!)
-            print(json["message"])
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            var loginManager = LoginManager()
+            loginManager.call(email: email, password: password)
+            self.performSegue(withIdentifier: "ToCalendarView", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToCalendarView" {
+            let destinationVC = segue.destination as! CalendarViewController
+            destinationVC.textLabel = "Success"
         }
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		8C055CE024AAFE32005F67E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CDF24AAFE32005F67E1 /* Assets.xcassets */; };
 		8C055CE324AAFE32005F67E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CE124AAFE32005F67E1 /* LaunchScreen.storyboard */; };
 		8C055CEC24AB2C0D005F67E1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */; };
+		8C4D8DC624AB802500346956 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4D8DC524AB802500346956 /* LoginManager.swift */; };
+		8C90863524AB8981003AE7D0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C90863424AB8981003AE7D0 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		8C055CE224AAFE32005F67E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C055CE424AAFE32005F67E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		8C4D8DC524AB802500346956 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		8C90863424AB8981003AE7D0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9CC69863E7C70F9548B7B17B /* Pods-Hactivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hactivity.release.xcconfig"; path = "Target Support Files/Pods-Hactivity/Pods-Hactivity.release.xcconfig"; sourceTree = "<group>"; };
 		CDF8AC393D4C021FB750D89B /* Pods-Hactivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hactivity.debug.xcconfig"; path = "Target Support Files/Pods-Hactivity/Pods-Hactivity.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +72,7 @@
 				8C055CD624AAFE31005F67E1 /* AppDelegate.swift */,
 				8C055CD824AAFE31005F67E1 /* SceneDelegate.swift */,
 				8C055CEA24AAFF6D005F67E1 /* Controllers */,
+				8C4D8DC424AB7FF500346956 /* Model */,
 				8C055CDC24AAFE31005F67E1 /* Main.storyboard */,
 				8C055CDF24AAFE32005F67E1 /* Assets.xcassets */,
 				8C055CE124AAFE32005F67E1 /* LaunchScreen.storyboard */,
@@ -81,8 +86,17 @@
 			children = (
 				8C055CDA24AAFE31005F67E1 /* LoginViewController.swift */,
 				8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */,
+				8C90863424AB8981003AE7D0 /* CalendarViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C4D8DC424AB7FF500346956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C4D8DC524AB802500346956 /* LoginManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9F3C8C545BCD84499DEFCD54 /* Pods */ = {
@@ -91,7 +105,6 @@
 				CDF8AC393D4C021FB750D89B /* Pods-Hactivity.debug.xcconfig */,
 				9CC69863E7C70F9548B7B17B /* Pods-Hactivity.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -218,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C90863524AB8981003AE7D0 /* CalendarViewController.swift in Sources */,
+				8C4D8DC624AB802500346956 /* LoginManager.swift in Sources */,
 				8C055CDB24AAFE31005F67E1 /* LoginViewController.swift in Sources */,
 				8C055CD724AAFE31005F67E1 /* AppDelegate.swift in Sources */,
 				8C055CEC24AB2C0D005F67E1 /* SignupViewController.swift in Sources */,
