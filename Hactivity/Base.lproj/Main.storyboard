@@ -24,6 +24,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qyI-Ly-eMk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVg-u4-hWb">
                                         <rect key="frame" x="116" y="347" width="54" height="30"/>

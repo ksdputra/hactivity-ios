@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -25,6 +27,13 @@ class LoginViewController: UIViewController {
         } else {
             passwordTextField.isSecureTextEntry = true
             sender.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let params = ["email": "kputra@mailinator.com", "password": "123456"]
+        AF.request("http://localhost:3000/api/login", method: .post, parameters: params).responseJSON { response in
+            let json = JSON(response.value!)
+            print(json["message"])
         }
     }
 }
