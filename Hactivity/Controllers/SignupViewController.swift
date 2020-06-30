@@ -10,6 +10,7 @@ import UIKit
 
 class SignupViewController: UIViewController {
 
+    @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,5 +22,14 @@ class SignupViewController: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
-
+    @IBAction func passwordShowButtonPressed(_ sender: UIButton) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            sender.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            sender.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
 }

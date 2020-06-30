@@ -9,6 +9,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +18,14 @@ class LoginViewController: UIViewController {
     }
 
 
+    @IBAction func passwordShowButtonPressed(_ sender: UIButton) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            sender.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            sender.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
 }
 
