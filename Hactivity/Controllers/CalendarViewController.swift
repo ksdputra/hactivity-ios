@@ -7,26 +7,27 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class CalendarViewController: UIViewController {
 
-    @IBOutlet var label: UILabel!
-    var textLabel: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = textLabel!
+        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
+        if accessToken == nil {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
+        KeychainWrapper.standard.removeObject(forKey: "accessToken")
     }
-    */
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
+        print(accessToken)
+    }
 
 }

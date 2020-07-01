@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController {
     
@@ -29,18 +32,40 @@ class LoginViewController: UIViewController {
         }
     }
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            var loginManager = LoginManager()
-            loginManager.call(email: email, password: password)
-            self.performSegue(withIdentifier: "ToCalendarView", sender: self)
+        // Validation
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        
+        if email.isEmpty || password.isEmpty {
+            displayMessage(title: "Error", message: "Email and password can't be blank.")
+            return
+        }
+        
+        // Login
+        let url = "http://localhost:3000/api/login"
+        let params = ["email": "\(email)", "password": "\(password)"]
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+            let json = JSON(response.value!)
+            if json["status"] == "OK" {
+                KeychainWrapper.standard.set(json["message"].string!, forKey: "accessToken")
+                self.performSegue(withIdentifier: "ToCalendarView", sender: self)
+            } else {
+                self.displayMessage(title: "Error", message: json["message"].string!)
+                return
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToCalendarView" {
-            let destinationVC = segue.destination as! CalendarViewController
-            destinationVC.textLabel = "Success"
+            _ = segue.destination as! CalendarViewController
         }
+    }
+    
+    func displayMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

@@ -19,7 +19,7 @@ class SignupViewController: UIViewController {
     
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func passwordShowButtonPressed(_ sender: UIButton) {

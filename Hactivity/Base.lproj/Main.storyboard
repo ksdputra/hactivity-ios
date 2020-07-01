@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                                             <color key="titleColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <segue destination="FhF-kZ-d0T" kind="presentation" animates="NO" modalPresentationStyle="currentContext" id="kaV-Dv-x0y"/>
+                                            <segue destination="FhF-kZ-d0T" kind="presentation" modalPresentationStyle="currentContext" id="kaV-Dv-x0y"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqp-hp-PMh">
@@ -126,37 +126,48 @@
         <!--Calendar View Controller-->
         <scene sceneID="saB-wf-sFF">
             <objects>
-                <viewController id="meC-eG-TVV" customClass="CalendarViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarViewController" id="meC-eG-TVV" customClass="CalendarViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j2R-hj-NOZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KX4-Q8-CRf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Hactivity" id="S87-vs-CSz">
+                                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Tt9-xE-X8k">
+                                            <connections>
+                                                <action selector="logOutButtonPressed:" destination="meC-eG-TVV" id="TEa-RC-94o"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-ij-WXx" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InZ-C5-T9w">
-                                <rect key="frame" x="186" y="620" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UF-Hz-Kwi">
+                                <rect key="frame" x="184" y="648" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="meC-eG-TVV" eventType="touchUpInside" id="VX6-Aw-Sn4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nEd-ij-WXx" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="DOI-ab-6Yb"/>
-                            <constraint firstItem="nEd-ij-WXx" firstAttribute="top" secondItem="qWd-ih-23X" secondAttribute="top" id="Ed5-TS-eXF"/>
-                            <constraint firstItem="qWd-ih-23X" firstAttribute="trailing" secondItem="nEd-ij-WXx" secondAttribute="trailing" id="ayQ-Dc-ahZ"/>
-                            <constraint firstItem="nEd-ij-WXx" firstAttribute="height" secondItem="j2R-hj-NOZ" secondAttribute="height" multiplier="0.5" id="jVR-y9-Emg"/>
-                            <constraint firstItem="qWd-ih-23X" firstAttribute="bottom" secondItem="InZ-C5-T9w" secondAttribute="bottom" constant="221" id="vPg-Lx-yCh"/>
-                            <constraint firstItem="InZ-C5-T9w" firstAttribute="centerX" secondItem="nEd-ij-WXx" secondAttribute="centerX" id="z82-89-ljw"/>
+                            <constraint firstItem="KX4-Q8-CRf" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="BQ6-mI-hcD"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="Bqi-qc-p10"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="height" secondItem="j2R-hj-NOZ" secondAttribute="height" multiplier="0.5" id="FBf-Gb-lm9"/>
+                            <constraint firstItem="KX4-Q8-CRf" firstAttribute="trailing" secondItem="qWd-ih-23X" secondAttribute="trailing" id="Qa6-hu-6mo"/>
+                            <constraint firstItem="KX4-Q8-CRf" firstAttribute="top" secondItem="qWd-ih-23X" secondAttribute="top" id="Uub-kq-npZ"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="trailing" secondItem="qWd-ih-23X" secondAttribute="trailing" id="YHG-bX-KoZ"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="top" secondItem="KX4-Q8-CRf" secondAttribute="bottom" id="hFR-Ir-f3V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWd-ih-23X"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4q9-Bv-owp"/>
-                    <connections>
-                        <outlet property="label" destination="InZ-C5-T9w" id="R1j-SX-a74"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeY-pk-btH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,7 +176,7 @@
         <!--Signup View Controller-->
         <scene sceneID="LmW-yB-eF4">
             <objects>
-                <viewController id="FhF-kZ-d0T" customClass="SignupViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" id="FhF-kZ-d0T" customClass="SignupViewController" customModule="Hactivity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q4f-mj-ctK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
