@@ -1,3 +1,5 @@
+<img src="Documentation/video.gif" width="240">
+
 - Swift version: 5.2
 - iOS version: 13.5
 
