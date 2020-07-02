@@ -116,7 +116,6 @@
                     <connections>
                         <outlet property="emailTextField" destination="Nmw-dh-s0Q" id="IH1-Dl-oyu"/>
                         <outlet property="passwordTextField" destination="AN1-Gv-lcI" id="u2K-AB-D0r"/>
-                        <segue destination="meC-eG-TVV" kind="presentation" identifier="ToCalendarView" animates="NO" modalPresentationStyle="currentContext" id="I4q-zW-QKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

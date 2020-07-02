@@ -45,20 +45,21 @@ class LoginViewController: UIViewController {
         let url = "http://localhost:3000/api/login"
         let params = ["email": "\(email)", "password": "\(password)"]
         AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
-            let json = JSON(response.value!)
+            let json = JSON(response.value ?? ["message": "Something went wrong..."])
             if json["status"] == "OK" {
                 KeychainWrapper.standard.set(json["message"].string!, forKey: "accessToken")
-                self.performSegue(withIdentifier: "ToCalendarView", sender: self)
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+                
+//                let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                appDelegate.window?.rootViewController = rootVC
             } else {
                 self.displayMessage(title: "Error", message: json["message"].string!)
                 return
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToCalendarView" {
-            _ = segue.destination as! CalendarViewController
         }
     }
     
