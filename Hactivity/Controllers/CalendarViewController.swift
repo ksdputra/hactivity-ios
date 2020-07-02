@@ -8,17 +8,20 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import FSCalendar
+import Alamofire
+import SwiftyJSON
 
 class CalendarViewController: UIViewController {
     
+    @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
-    var activities = [
-        Activity(id: 1, title: "Research for navigation controller", startAt: "17:00"),
-        Activity(id: 2, title: "Learn Hacking With iOS part 8", startAt: "18:00")
-    ]
+    var activities = [Activity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        calendar.delegate = self
         
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
@@ -51,7 +54,50 @@ extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityTableViewCell
         cell.titleLabel.text = activities[indexPath.row].title
-        cell.startAtLabel.text = activities[indexPath.row].startAt
+        cell.startAtLabel.text = activities[indexPath.row].getStartAt()
         return cell
+    }
+}
+
+// MARK: - FSCalendarDelegate
+
+extension CalendarViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // Get next date
+        let endDateRaw = Calendar.current.date(byAdding: .day, value: 1, to: date)
+        
+        // Formatting date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let startDate = formatter.string(from: date)
+        let endDate = formatter.string(from: endDateRaw!)
+        
+        
+        // Fetch index
+        let url = "http://localhost:3000/api/activity"
+        let params = ["from_date": startDate, "to_date": endDate]
+        let token = KeychainWrapper.standard.string(forKey: "accessToken")
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token!)"
+            
+        ]
+        AF.request(url, parameters: params, headers: headers).responseJSON { response in
+            let json = JSON(response.value ?? ["message": "Something went wrong..."])
+            
+            self.activities = []
+            var counter: Int
+            if json["object"].count <= 0 {
+                counter = 0
+            } else {
+                counter = json["object"].count
+                for i in 0...(counter - 1) {
+                    let object = json["object"][i]
+                    let activity = Activity(id: object["id"].int!, title: object["title"].string!, startAt: object["start_at"].string!)
+                    self.activities.append(activity)
+                }
+            }
+            
+            self.tableView.reloadData()
+        }
     }
 }
