@@ -10,16 +10,25 @@ import UIKit
 import SwiftKeychainWrapper
 
 class CalendarViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var activities = [
+        Activity(id: 1, title: "Research for navigation controller", startAt: "17:00"),
+        Activity(id: 2, title: "Learn Hacking With iOS part 8", startAt: "18:00")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
 
-        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
-        if accessToken == nil {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false, completion: nil)
-        }
+//        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
+//        if accessToken == nil {
+//            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: false, completion: nil)
+//        }
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
@@ -30,10 +39,19 @@ class CalendarViewController: UIViewController {
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.window?.rootViewController = rootVC
     }
-    
-    @IBAction func buttonPressed(_ sender: UIButton) {
-        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
-        print(accessToken)
-    }
+}
 
+// MARK: - UITableViewDataSource
+
+extension CalendarViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activities.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityTableViewCell
+        cell.titleLabel.text = activities[indexPath.row].title
+        cell.startAtLabel.text = activities[indexPath.row].startAt
+        return cell
+    }
 }

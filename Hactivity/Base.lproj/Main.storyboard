@@ -143,34 +143,38 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-ij-WXx" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="269"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UF-Hz-Kwi">
-                                <rect key="frame" x="184" y="648" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="meC-eG-TVV" eventType="touchUpInside" id="VX6-Aw-Sn4"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SiT-zH-lSX">
+                                <rect key="frame" x="0.0" y="357" width="414" height="505"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="SiT-zH-lSX" firstAttribute="top" secondItem="nEd-ij-WXx" secondAttribute="bottom" id="3cE-t3-dhR"/>
                             <constraint firstItem="KX4-Q8-CRf" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="BQ6-mI-hcD"/>
                             <constraint firstItem="nEd-ij-WXx" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="Bqi-qc-p10"/>
-                            <constraint firstItem="nEd-ij-WXx" firstAttribute="height" secondItem="j2R-hj-NOZ" secondAttribute="height" multiplier="0.5" id="FBf-Gb-lm9"/>
+                            <constraint firstItem="nEd-ij-WXx" firstAttribute="height" secondItem="j2R-hj-NOZ" secondAttribute="height" multiplier="0.3" id="FBf-Gb-lm9"/>
                             <constraint firstItem="KX4-Q8-CRf" firstAttribute="trailing" secondItem="qWd-ih-23X" secondAttribute="trailing" id="Qa6-hu-6mo"/>
+                            <constraint firstItem="SiT-zH-lSX" firstAttribute="leading" secondItem="qWd-ih-23X" secondAttribute="leading" id="T0p-F3-PXn"/>
                             <constraint firstItem="KX4-Q8-CRf" firstAttribute="top" secondItem="qWd-ih-23X" secondAttribute="top" id="Uub-kq-npZ"/>
                             <constraint firstItem="nEd-ij-WXx" firstAttribute="trailing" secondItem="qWd-ih-23X" secondAttribute="trailing" id="YHG-bX-KoZ"/>
+                            <constraint firstItem="qWd-ih-23X" firstAttribute="trailing" secondItem="SiT-zH-lSX" secondAttribute="trailing" id="eVg-XE-aTu"/>
                             <constraint firstItem="nEd-ij-WXx" firstAttribute="top" secondItem="KX4-Q8-CRf" secondAttribute="bottom" id="hFR-Ir-f3V"/>
+                            <constraint firstItem="qWd-ih-23X" firstAttribute="bottom" secondItem="SiT-zH-lSX" secondAttribute="bottom" id="qOQ-U4-eFp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWd-ih-23X"/>
                     </view>
+                    <navigationItem key="navigationItem" id="P8a-DB-Slr"/>
+                    <connections>
+                        <outlet property="tableView" destination="SiT-zH-lSX" id="i0I-lF-IP3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeY-pk-btH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="138"/>
+            <point key="canvasLocation" x="2119" y="138"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="LmW-yB-eF4">

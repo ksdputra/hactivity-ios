@@ -15,6 +15,9 @@
 		8C055CE024AAFE32005F67E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CDF24AAFE32005F67E1 /* Assets.xcassets */; };
 		8C055CE324AAFE32005F67E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CE124AAFE32005F67E1 /* LaunchScreen.storyboard */; };
 		8C055CEC24AB2C0D005F67E1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */; };
+		8C367C6824ADF9F30017F13F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C367C6724ADF9F30017F13F /* Activity.swift */; };
+		8C367C6B24ADFD690017F13F /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */; };
+		8C367C6C24ADFD690017F13F /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */; };
 		8C90863524AB8981003AE7D0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C90863424AB8981003AE7D0 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		8C055CE224AAFE32005F67E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C055CE424AAFE32005F67E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		8C367C6724ADF9F30017F13F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		8C90863424AB8981003AE7D0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9CC69863E7C70F9548B7B17B /* Pods-Hactivity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hactivity.release.xcconfig"; path = "Target Support Files/Pods-Hactivity/Pods-Hactivity.release.xcconfig"; sourceTree = "<group>"; };
 		CDF8AC393D4C021FB750D89B /* Pods-Hactivity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hactivity.debug.xcconfig"; path = "Target Support Files/Pods-Hactivity/Pods-Hactivity.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 				8C055CD624AAFE31005F67E1 /* AppDelegate.swift */,
 				8C055CD824AAFE31005F67E1 /* SceneDelegate.swift */,
 				8C055CEA24AAFF6D005F67E1 /* Controllers */,
+				8C367C6624ADF9980017F13F /* Model */,
 				8C055CDC24AAFE31005F67E1 /* Main.storyboard */,
 				8C055CDF24AAFE32005F67E1 /* Assets.xcassets */,
 				8C055CE124AAFE32005F67E1 /* LaunchScreen.storyboard */,
@@ -84,8 +91,18 @@
 				8C055CDA24AAFE31005F67E1 /* LoginViewController.swift */,
 				8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */,
 				8C90863424AB8981003AE7D0 /* CalendarViewController.swift */,
+				8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */,
+				8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C367C6624ADF9980017F13F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C367C6724ADF9F30017F13F /* Activity.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9F3C8C545BCD84499DEFCD54 /* Pods */ = {
@@ -167,6 +184,7 @@
 			files = (
 				8C055CE324AAFE32005F67E1 /* LaunchScreen.storyboard in Resources */,
 				8C055CE024AAFE32005F67E1 /* Assets.xcassets in Resources */,
+				8C367C6C24ADFD690017F13F /* ActivityTableViewCell.xib in Resources */,
 				8C055CDE24AAFE31005F67E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,9 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C367C6824ADF9F30017F13F /* Activity.swift in Sources */,
 				8C90863524AB8981003AE7D0 /* CalendarViewController.swift in Sources */,
 				8C055CDB24AAFE31005F67E1 /* LoginViewController.swift in Sources */,
 				8C055CD724AAFE31005F67E1 /* AppDelegate.swift in Sources */,
+				8C367C6B24ADFD690017F13F /* ActivityTableViewCell.swift in Sources */,
 				8C055CEC24AB2C0D005F67E1 /* SignupViewController.swift in Sources */,
 				8C055CD924AAFE31005F67E1 /* SceneDelegate.swift in Sources */,
 			);
