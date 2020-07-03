@@ -268,6 +268,9 @@
                                         <state key="normal" title="Sign Up">
                                             <color key="titleColor" red="0.33297377820000001" green="0.2708156109" blue="0.25490111110000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signupButtonPressed:" destination="FhF-kZ-d0T" eventType="touchUpInside" id="VWh-h5-GGJ"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UlX-la-wOE">
                                         <rect key="frame" x="40.5" y="254" width="205.5" height="29"/>
@@ -341,6 +344,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="uPr-Sq-4Qx"/>
                     <connections>
+                        <outlet property="emailTextField" destination="O65-YM-eQq" id="FbA-nA-j7K"/>
+                        <outlet property="nameTextField" destination="Yqx-f1-TXa" id="YsN-yo-6zx"/>
                         <outlet property="passwordTextField" destination="sIy-Wg-gXT" id="MCe-Cc-Hn9"/>
                     </connections>
                 </viewController>
