@@ -14,9 +14,13 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
