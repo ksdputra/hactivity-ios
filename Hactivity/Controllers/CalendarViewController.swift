@@ -89,7 +89,6 @@ extension CalendarViewController: FSCalendarDelegate {
         let token = KeychainWrapper.standard.string(forKey: "accessToken")
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token!)"
-            
         ]
         AF.request(url, parameters: params, headers: headers).responseJSON { response in
             let json = JSON(response.value ?? ["message": "Something went wrong..."])
