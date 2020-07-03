@@ -42,6 +42,16 @@ class CalendarViewController: UIViewController {
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.window?.rootViewController = rootVC
     }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "ToAddView", sender: self)
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ToAddView" {
+//            let vc = segue.destination as! AddViewController
+//        }
+//    }
 }
 
 // MARK: - UITableViewDataSource

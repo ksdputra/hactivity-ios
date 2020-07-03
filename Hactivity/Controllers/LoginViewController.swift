@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
                 vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
                 
 //                let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController

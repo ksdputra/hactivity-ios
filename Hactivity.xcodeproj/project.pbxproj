@@ -15,6 +15,7 @@
 		8C055CE024AAFE32005F67E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CDF24AAFE32005F67E1 /* Assets.xcassets */; };
 		8C055CE324AAFE32005F67E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C055CE124AAFE32005F67E1 /* LaunchScreen.storyboard */; };
 		8C055CEC24AB2C0D005F67E1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */; };
+		8C1B44E924AEE8CE005C9BE7 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B44E824AEE8CE005C9BE7 /* AddViewController.swift */; };
 		8C367C6824ADF9F30017F13F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C367C6724ADF9F30017F13F /* Activity.swift */; };
 		8C367C6B24ADFD690017F13F /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */; };
 		8C367C6C24ADFD690017F13F /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */; };
@@ -32,6 +33,7 @@
 		8C055CE224AAFE32005F67E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C055CE424AAFE32005F67E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C055CEB24AB2C0D005F67E1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		8C1B44E824AEE8CE005C9BE7 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		8C367C6724ADF9F30017F13F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				8C90863424AB8981003AE7D0 /* CalendarViewController.swift */,
 				8C367C6924ADFD690017F13F /* ActivityTableViewCell.swift */,
 				8C367C6A24ADFD690017F13F /* ActivityTableViewCell.xib */,
+				8C1B44E824AEE8CE005C9BE7 /* AddViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				8C367C6824ADF9F30017F13F /* Activity.swift in Sources */,
 				8C90863524AB8981003AE7D0 /* CalendarViewController.swift in Sources */,
+				8C1B44E924AEE8CE005C9BE7 /* AddViewController.swift in Sources */,
 				8C055CDB24AAFE31005F67E1 /* LoginViewController.swift in Sources */,
 				8C055CD724AAFE31005F67E1 /* AppDelegate.swift in Sources */,
 				8C367C6B24ADFD690017F13F /* ActivityTableViewCell.swift in Sources */,
