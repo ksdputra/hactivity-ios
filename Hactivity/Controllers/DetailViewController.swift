@@ -89,9 +89,7 @@ class DetailViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token!)"
         ]
-        print(params)
         AF.request(url, method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            print(response)
             let json = JSON(response.value ?? ["message": "Something went wrong..."])
             if json["status"] == "OK" {
                 self.displaySuccessMessage(message: json["message"].string!)
@@ -103,6 +101,26 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        let url = "http://localhost:3000/api/activity/\(id!)"
+        let token = KeychainWrapper.standard.string(forKey: "accessToken")
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token!)"
+        ]
+        AF.request(url, method: .delete, headers: headers).responseJSON { response in
+            print(response.response?.statusCode)
+            if let statusCode = response.response?.statusCode {
+                if statusCode == 204 {
+                    self.displaySuccessMessage(message: "Activity has been deleted")
+                    return
+                }
+            } else {
+                self.displayErrorMessage(message: "Something went wrong...")
+                return
+            }
+        }
+    }
+
     func displayErrorMessage(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

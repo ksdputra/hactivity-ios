@@ -542,6 +542,16 @@
                                                     <action selector="updateButtonPressed:" destination="V8a-IE-DPC" eventType="touchUpInside" id="tL6-mL-XII"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXQ-tW-h95">
+                                                <rect key="frame" x="172" y="735" width="70" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteButtonPressed:" destination="V8a-IE-DPC" eventType="touchUpInside" id="AYJ-2G-CQ3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -559,12 +569,14 @@
                                             <constraint firstItem="xOk-Od-1aS" firstAttribute="leading" secondItem="2qR-9L-dJk" secondAttribute="leading" constant="20" id="anl-S5-FVQ"/>
                                             <constraint firstItem="h4u-e2-gKE" firstAttribute="leading" secondItem="2qR-9L-dJk" secondAttribute="leading" constant="20" id="bbj-Fp-UAu"/>
                                             <constraint firstAttribute="trailing" secondItem="xOk-Od-1aS" secondAttribute="trailing" constant="20" id="glY-PO-CcC"/>
+                                            <constraint firstItem="wXQ-tW-h95" firstAttribute="top" secondItem="xZU-DG-HTP" secondAttribute="bottom" constant="40" id="gmL-31-L8w"/>
                                             <constraint firstItem="UWL-fX-bDc" firstAttribute="leading" secondItem="2qR-9L-dJk" secondAttribute="leading" constant="20" id="i5E-qA-XU7"/>
                                             <constraint firstAttribute="trailing" secondItem="h4u-e2-gKE" secondAttribute="trailing" constant="20" id="jml-Ta-Ao4"/>
                                             <constraint firstItem="qky-IA-Wy7" firstAttribute="leading" secondItem="2qR-9L-dJk" secondAttribute="leading" constant="20" id="oWG-Tb-00y"/>
                                             <constraint firstItem="qky-IA-Wy7" firstAttribute="top" secondItem="UWL-fX-bDc" secondAttribute="bottom" constant="20" id="qpj-Q5-Exe"/>
                                             <constraint firstItem="xZU-DG-HTP" firstAttribute="top" secondItem="0Ng-Ko-TUe" secondAttribute="bottom" constant="30" id="x7k-4P-tnk"/>
                                             <constraint firstItem="UWL-fX-bDc" firstAttribute="top" secondItem="xOk-Od-1aS" secondAttribute="bottom" constant="20" id="yGD-mS-G4y"/>
+                                            <constraint firstItem="wXQ-tW-h95" firstAttribute="centerX" secondItem="2qR-9L-dJk" secondAttribute="centerX" id="ycc-e9-XKT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
