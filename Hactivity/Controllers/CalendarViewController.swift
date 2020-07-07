@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     var activities = [Activity]()
+    var activityID = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +49,12 @@ class CalendarViewController: UIViewController {
         self.performSegue(withIdentifier: "ToAddView", sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ToAddView" {
-//            let vc = segue.destination as! AddViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToDetailView" {
+            let vc = segue.destination as! DetailViewController
+            vc.id = activityID
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -70,6 +72,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        activityID = activities[indexPath.row].id
         self.performSegue(withIdentifier: "ToDetailView", sender: self)
     }
 }

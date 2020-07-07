@@ -591,7 +591,7 @@
                         <viewLayoutGuide key="safeArea" id="9Q2-JW-BzG"/>
                     </view>
                     <connections>
-                        <outlet property="colorTextField" destination="0Ng-Ko-TUe" id="Cev-gA-h3i"/>
+                        <outlet property="colorTextField" destination="g6d-VQ-mLf" id="a3O-kG-Jov"/>
                         <outlet property="descriptionTextField" destination="TFC-Uk-mEI" id="8ZC-rO-pGl"/>
                         <outlet property="endDatePicker" destination="niP-YJ-p9d" id="c3O-fy-Mpc"/>
                         <outlet property="startDatePicker" destination="YVX-h5-kJB" id="kMP-oZ-nvg"/>
