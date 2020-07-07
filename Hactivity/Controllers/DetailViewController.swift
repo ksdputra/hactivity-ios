@@ -39,14 +39,15 @@ class DetailViewController: UIViewController {
                     let json = JSON(response.value!)
                     
                     // String to Date
+                    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     let startdate = dateFormatter.date(from: json["object"]["start_at"].string!)!
                     let endDate = dateFormatter.date(from: json["object"]["end_at"].string!)!
                     
                     self.titleTextField.text = json["object"]["title"].string!
-                    self.startDatePicker.date = startdate
-                    self.endDatePicker.date = endDate
+                    self.startDatePicker.date = startdate.addingTimeInterval(-Double(secondsFromGMT))
+                    self.endDatePicker.date = endDate.addingTimeInterval(-Double(secondsFromGMT))
                     self.descriptionTextField.text = json["object"]["description"].string ?? ""
                     self.tagsTextField.text = json["object"]["tag_list"].string ?? ""
                     self.colorTextField.text = json["object"]["color"].string ?? ""
