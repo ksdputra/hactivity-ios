@@ -24,34 +24,67 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Fetch Detail
+        fetchDetail()
+    }
+    
+    func fetchDetail() {
         let url = "http://localhost:3000/api/activity/\(id!)"
         let token = KeychainWrapper.standard.string(forKey: "accessToken")
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token!)"
         ]
         AF.request(url, headers: headers).responseJSON { response in
-            let json = JSON(response.value!)
-            
-            // String to Date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            let startdate = dateFormatter.date(from: json["object"]["start_at"].string!)!
-            let endDate = dateFormatter.date(from: json["object"]["end_at"].string!)!
-            
-            self.titleTextField.text = json["object"]["title"].string!
-            self.startDatePicker.date = startdate
-            self.endDatePicker.date = endDate
-            self.descriptionTextField.text = json["object"]["description"].string ?? ""
-            self.tagsTextField.text = json["object"]["tag_list"].string ?? ""
-            self.colorTextField.text = json["object"]["color"].string ?? ""
+            if let statusCode = response.response?.statusCode {
+                if statusCode == 200 {
+                    let json = JSON(response.value!)
+                    
+                    // String to Date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    let startdate = dateFormatter.date(from: json["object"]["start_at"].string!)!
+                    let endDate = dateFormatter.date(from: json["object"]["end_at"].string!)!
+                    
+                    self.titleTextField.text = json["object"]["title"].string!
+                    self.startDatePicker.date = startdate
+                    self.endDatePicker.date = endDate
+                    self.descriptionTextField.text = json["object"]["description"].string ?? ""
+                    self.tagsTextField.text = json["object"]["tag_list"].string ?? ""
+                    self.colorTextField.text = json["object"]["color"].string ?? ""
+                } else {
+                    self.displayErrorMessage(message: "Something went wrong...")
+                    return
+                }
+            } else {
+                self.displayErrorMessage(message: "Something went wrong...")
+                return
+            }
         }
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+
+    func displayErrorMessage(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     
+    func displaySuccessMessage(message: String) {
+        let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: dismissAfterUpdated))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func dismissAfterUpdated(alert: UIAlertAction!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UPDATE
+
+extension DetailViewController {
     @IBAction func updateButtonPressed(_ sender: UIButton) {
         // Validation
         let title = titleTextField.text!
@@ -63,7 +96,6 @@ class DetailViewController: UIViewController {
             displayErrorMessage(message: "Title and Color can't be blank.")
             return
         }
-        
 
         // Get start_at and end_at
         var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
@@ -100,7 +132,11 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
+}
+
+// MARK: - DELETE
+
+extension DetailViewController {
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         let url = "http://localhost:3000/api/activity/\(id!)"
         let token = KeychainWrapper.standard.string(forKey: "accessToken")
@@ -108,7 +144,6 @@ class DetailViewController: UIViewController {
             "Authorization": "Bearer \(token!)"
         ]
         AF.request(url, method: .delete, headers: headers).responseJSON { response in
-            print(response.response?.statusCode)
             if let statusCode = response.response?.statusCode {
                 if statusCode == 204 {
                     self.displaySuccessMessage(message: "Activity has been deleted")
@@ -119,21 +154,5 @@ class DetailViewController: UIViewController {
                 return
             }
         }
-    }
-
-    func displayErrorMessage(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func displaySuccessMessage(message: String) {
-        let alertController = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: dismissAfterUpdated))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func dismissAfterUpdated(alert: UIAlertAction!) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
