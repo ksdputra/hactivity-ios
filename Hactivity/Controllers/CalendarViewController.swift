@@ -24,6 +24,7 @@ class CalendarViewController: UIViewController {
         calendar.delegate = self
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
 
 //        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
@@ -56,7 +57,7 @@ class CalendarViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension CalendarViewController: UITableViewDataSource {
+extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activities.count
     }
@@ -66,6 +67,10 @@ extension CalendarViewController: UITableViewDataSource {
         cell.titleLabel.text = activities[indexPath.row].title
         cell.startAtLabel.text = activities[indexPath.row].getStartAt()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ToDetailView", sender: self)
     }
 }
 
