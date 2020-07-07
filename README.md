@@ -13,4 +13,6 @@ MVP:
   - User can login
   - User can add activities
   - User can show activities
-  - User can show activities detail
+  - User can show an activity detail
+  - User can change an activitiy detail
+  - User can delete an activity
