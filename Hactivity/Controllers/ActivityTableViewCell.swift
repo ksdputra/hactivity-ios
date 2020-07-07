@@ -15,6 +15,7 @@ class ActivityTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.accessoryType = .disclosureIndicator
+        self.backgroundColor = #colorLiteral(red: 1, green: 0.8897035122, blue: 0.87011832, alpha: 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

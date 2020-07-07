@@ -32,8 +32,6 @@ class DetailViewController: UIViewController {
         ]
         AF.request(url, headers: headers).responseJSON { response in
             let json = JSON(response.value!)
-            print(json)
-            
             
             // String to Date
             let dateFormatter = DateFormatter()
