@@ -27,7 +27,18 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
+        
+        
+        let currentDate = Date()
+        let tomorrowDate  = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)
 
+        var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: secondsFromGMT)
+        let startDate = formatter.string(from: currentDate)
+        let endDate = formatter.string(from: tomorrowDate!)
+        fetchIndex(from: startDate, to: endDate)
 //        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
 //        if accessToken == nil {
 //            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -90,8 +101,11 @@ extension CalendarViewController: FSCalendarDelegate {
         let startDate = formatter.string(from: date)
         let endDate = formatter.string(from: endDateRaw!)
         
-        
         // Fetch index
+        fetchIndex(from: startDate, to: endDate)
+    }
+    
+    func fetchIndex(from startDate: String, to endDate: String) {
         let url = "http://localhost:3000/api/activity"
         let params = ["from_date": startDate, "to_date": endDate]
         let token = KeychainWrapper.standard.string(forKey: "accessToken")
