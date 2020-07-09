@@ -48,21 +48,24 @@ class LoginViewController: UIViewController {
         }
         
         // Login
+        login(email: email, password: password)
+    }
+    
+    func login(email: String, password: String) {
         let url = "http://localhost:3000/api/login"
         let params = ["email": "\(email)", "password": "\(password)"]
         AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
             let json = JSON(response.value ?? ["message": "Something went wrong..."])
             if json["status"] == "OK" {
+                // Put the JWT in keychain
                 KeychainWrapper.standard.set(json["message"].string!, forKey: "accessToken")
                 
+                // Present VC Modally (Should change root vc, fix later)
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
                 vc.modalPresentationStyle = .fullScreen
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
                 
-//                let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
-//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//                appDelegate.window?.rootViewController = rootVC
             } else {
                 self.displayMessage(title: "Error", message: json["message"].string!)
                 return

@@ -27,6 +27,7 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
+        tableView.rowHeight = 44
         
         
         let currentDate = Date()
@@ -39,21 +40,18 @@ class CalendarViewController: UIViewController {
         let startDate = formatter.string(from: currentDate)
         let endDate = formatter.string(from: tomorrowDate!)
         fetchIndex(from: startDate, to: endDate)
-//        let accessToken = KeychainWrapper.standard.string(forKey: "accessToken")
-//        if accessToken == nil {
-//            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//            vc.modalPresentationStyle = .fullScreen
-//            self.present(vc, animated: false, completion: nil)
-//        }
+
+        // Should be initial vc
+        // If keychain is nil then change root vc to login screen
+        // fix later
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
+        // Delete JWT from keychain
         KeychainWrapper.standard.removeObject(forKey: "accessToken")
-        self.dismiss(animated: true, completion: nil)
         
-//        let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        appDelegate.window?.rootViewController = rootVC
+        // Dismiss vc (Should change root vc, fix later)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
